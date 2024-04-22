@@ -20,3 +20,11 @@ pub fn readCsv() ->Vec<StringRecord>{
     println!("{:?}",mat[0]);
     mat
 }
+
+pub fn add(a:u8,b:u8)->Result<u8,Error>{
+    Ok(a+b)
+}
+
+pub fn sub(a:u8,b:u8)->Result<u8,Error>{
+    Ok(a-b)
+}

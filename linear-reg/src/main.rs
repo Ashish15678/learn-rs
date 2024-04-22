@@ -1,5 +1,6 @@
 pub mod matrix;
 pub mod csv;
+pub mod test;
 
 use std::io;
 use matrix::*;
