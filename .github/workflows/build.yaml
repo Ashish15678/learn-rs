@@ -1,0 +1,23 @@
+# YAML
+on:
+  push:
+    branches: [ main ]  # Run on pushes to the main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Job runs on Ubuntu virtual machine
+    steps:
+      - uses: actions/checkout@v3  # Checkout code from repository
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1  # Install Rust toolchain from actions-rs
+        with:
+          component: stable
+      - name: Cache cargo registry
+        uses: actions/cache@v3  # Cache cargo dependencies
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-{{ hashFiles('Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+      - name: Run Tests
+        run: cargo test
